@@ -1,0 +1,42 @@
+۱۵- تابع زیر را نوشته و آزمایش کنید:
+
+void rotate(int a[ ], int n, int k);
+
+این تابع، n عنصر اول آرایه a را ،k موقعیت به راست (یا اگر k منفی باشد k موقعیت به چپ) منتقل میکند k عنصر آخر به شروع آرایه منتقل میشوند. برای مثال فراخوانی  (3 ,8 ,a)rotate آرایه {22,33,44,55,66,77,88,99} را به آرایه {77,88,99,22,33,44,55,66}تبدیل میکند. بدیهی است که فراخوانی (rotate(a,8,- 5 تأثیر مشابهی خواهد داشت.
+
+پاسخ:
+#include<iostream.h>
+
+void rotate(int a[], int n, int k);
+
+int main()
+{
+    int a[] = {22, 33, 44, 55, 66, 77, 88, 99};
+
+    rotate(a, 8, 3);
+
+    cout << "The array is: ";
+
+    for(int i = 0; i < 8; i++)
+        cout << a[i] << " ";
+
+    cout << endl;
+
+    return 0;
+}
+
+void rotate(int a[], int n, int k)
+{
+    int b[100];
+
+    if(k < 0)
+        k = n + k;
+
+    k = k % n;
+
+    for(int i = 0; i < n; i++)
+        b[(i + k) % n] = a[i];
+
+    for(int i = 0; i < n; i++)
+        a[i] = b[i];
+}
